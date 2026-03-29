@@ -1,0 +1,103 @@
+<section class="contact-section py-5">
+  <div class="container">
+    <div class="text-center mb-5">
+      <p class="text-uppercase text-muted fw-semibold mb-2">Contacta con nosotros!</p>
+      <h2 class="fw-bold text-primary fs-2">Estamos aqui para ayudarte</h2>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <form
+          class="contact-form row g-4 p-5 rounded-4 shadow-sm bg-white border border-primary-subtle needs-validation"
+          noValidate
+          onSubmit="{onSubmit}"
+        >
+          <div class="col-md-6">
+            <input
+              type="text"
+              name="nombre"
+              class="form-control rounded-3 p-3"
+              placeholder="Nombre"
+              
+              onChange="{onChange}"
+            />
+            <!-- {errors.nombre && (
+                                    <div class="invalid-feedback">{errors.nombre}</div>
+                                )} -->
+          </div>
+
+          <div class="col-md-6">
+            <input
+              type="email"
+              name="email"
+              class="form-control rounded-3 p-3"
+              placeholder="Correo electrónico"
+             
+              onChange="{onChange}"
+            />
+            <!-- {errors.email && (
+                                    <div class="invalid-feedback">{errors.email}</div>
+                                )} -->
+          </div>
+
+          <div class="col-md-6">
+            <input
+              type="tel"
+              name="tel"
+              class="form-control rounded-3 p-3"
+              placeholder="Telefono"
+              
+              onChange="{onChange}"
+            />
+            <!-- {errors.tel && (
+                                    <div class="invalid-feedback">{errors.tel}</div>
+                                )} -->
+          </div>
+          <!-- {/* TÍTULO */} -->
+          <div class="mb-3">
+            <input
+              type="text"
+              name="titulo"
+              class="form-control rounded-3 p-3"
+              placeholder="Título"
+              
+              onChange="{onChange}"
+            />
+            <!-- {errors.titulo && <div class="invalid-feedback">{errors.titulo}</div>} -->
+          </div>
+
+          <div class="col-12">
+            <textarea
+              name="mensaje"
+              class="form-control"
+              rows="4"
+              placeholder="Tu mensaje"
+              value="{form.mensaje}"
+              onChange="{onChange}"
+            ></textarea>
+            <!-- {errors.mensaje && (
+                                    <div class="invalid-feedback d-block">
+                                        {errors.mensaje}
+                                    </div>
+                                )} -->
+          </div>
+
+          <div class="col-12 text-center">
+            <button
+              type="submit"
+              class="btn btn-primary border border-secondary border-2 rounded-pill px-5 py-3 fs-6 fw-bold text-uppercase"
+            >
+              Enviar mensaje
+            </button>
+          </div>
+
+          <!-- {exitoMensaje && (
+                                <div class={`alert alert-${tipoMensaje} mt-3`} role="alert">
+                                    {exitoMensaje}
+                                </div>
+                            )} -->
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
