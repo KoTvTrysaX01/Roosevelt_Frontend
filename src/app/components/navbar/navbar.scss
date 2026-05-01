@@ -1,9 +1,5 @@
 @import "../../../variables.scss";
 
-.mi-nav{
-  background-color: $secondary-dark;
-}
-
 .nav-item {
   line-height: 40px;
   margin-right: 1rem;
@@ -13,7 +9,7 @@
 }
 
 span.nav-link:hover, span.nav-links:hover {
-  color: $secondary; 
+  color: $secondary;
   text-decoration: underline; 
 }
 

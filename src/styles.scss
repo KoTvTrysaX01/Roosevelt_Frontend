@@ -5,35 +5,49 @@
 
 
 
-$primary: #5B2671;
-$primary-light: #9974AA;
-$secondary:#e6d15a;
-$secondary-dark:#ac9f30;
-$success:#527614;
-$danger: #af251b;
-$warning: #ffa023;
-$info: #a0C562;
-$color_primary-accento: #84329B;
-$light: white;
-// $dark:
-$text-nav: #736100;
+$primary: #450693;
+$secondary:#8C00FF;
+$warning: #FF3F7F;
+$info: #FFC400;
+$success:#527B14;
+$danger: #AF251B;
+$light: #FFFFFF;
+$dark: #000000;
 
 
-$color_form_bg: #f8f9fa;
-$border-form: $primary-light;
-$navigacion-btn-text:$light;
-$btn-hover-bg: darken($primary, 10%);
+$primary-dark: darken($primary, 20%);
+$secondary-dark:darken($secondary, 20%);
+$warning-dark: darken($warning, 20%);
+$info-dark: darken($info, 10%);
+$success-dark:darken($success, 20%);
+$danger-dark: darken($danger, 20%);
+
+$primary-light: lighten($primary, 20%);
+$secondary-light:lighten($primary, 20%);
+$warning-light: lighten($primary, 20%);
+$info-light: lighten($primary, 20%);
+$success-light:lighten($primary, 20%);
+$danger-light: lighten($primary, 20%);
+
 
 @import "../node_modules/bootstrap/scss/functions";
 @import "../node_modules/bootstrap/scss/variables";
 @import "../node_modules/bootstrap/scss/variables-dark";
 
 $custom-colors: (
-    "form": $color_form_bg,
-    "btn-hover": $btn-hover-bg,
-    "form-accento" : $color_primary-accento,
-    "border-color-form": $border-form
+    "primary-dark": $primary-dark,
+    "secondary-dark": $secondary-dark,
+    "warning-dark": $warning-dark,
+    "info-dark": $info-dark,
+    "success-dark": $success-dark,
+    "danger-dark": $danger-dark,
 
+    "primary-light": $primary-light,
+    "secondary-light": $secondary-light,
+    "warning-light": $warning-light,
+    "info-light": $info-light,
+    "success-light": $success-light,
+    "danger-light": $danger-light,
 );
 $theme-colors: map-merge($theme-colors,$custom-colors);
 
