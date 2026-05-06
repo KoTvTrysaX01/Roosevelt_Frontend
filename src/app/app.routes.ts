@@ -4,12 +4,14 @@ import { MyRoutes } from './pages/my-routes/my-routes';
 import { FavRoutes } from './pages/fav-routes/fav-routes';
 import { Settings } from './pages/settings/settings';
 import { Administrador } from './pages/administrador/administrador';
+import { Map } from './pages/map/map';
+import { Testapi } from './components/testapi/testapi';
 
 export const routes: Routes = [
   {
     path: '',
     redirectTo: 'home',
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
   {
     path: 'home',
@@ -34,5 +36,9 @@ export const routes: Routes = [
   {
     path: 'admin',
     component: Administrador,
+  },
+  {
+    path: 'test',
+    component: Testapi,
   },
 ];
