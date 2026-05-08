@@ -5,7 +5,10 @@ import { FavRoutes } from './pages/fav-routes/fav-routes';
 import { Settings } from './pages/settings/settings';
 import { Administrador } from './pages/administrador/administrador';
 import { Map } from './pages/map/map';
-import { Testapi } from './components/testapi/testapi';
+import { Login } from './pages/login/login';
+import { LogIn } from './components/log-in/log-in';
+import { Register } from './components/register/register';
+import { Restore } from './components/restore/restore';
 
 export const routes: Routes = [
   {
@@ -38,7 +41,22 @@ export const routes: Routes = [
     component: Administrador,
   },
   {
-    path: 'test',
-    component: Testapi,
+    path: 'login',
+    component: Login,
+    children: [
+      {
+        path: 'log-in',
+        component: LogIn,
+        pathMatch: 'full'
+      },
+      {
+        path: 'register',
+        component: Register
+      },
+      {
+        path: 'restore',
+        component: Restore
+      }
+    ]
   },
 ];
