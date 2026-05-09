@@ -1,1 +1,76 @@
-<p>side-menu works!</p>
+<div class="d-inline-block bg-primary p-3">
+  <div class="d-flex align-items-center justify-content-center">
+    <span class="h2 text-light {{visible ? 'd-inline': 'd-none'}} pe-5">Menu</span>
+    <button class="btn btn-primary-light px-2 py-0" (click)="visible = !visible"><i class="bi {{visible ? 'bi-x-lg': 'bi-list'}} fs-2"></i></button>
+  </div>
+  <div>
+    <button
+      class="d-flex btn btn-success-light justify-content-start align-items-center text-light py-1 my-2 w-100"
+    >
+      <i class="bi bi-send-exclamation fs-3"></i><span class="fs-4 ps-3 {{visible ? 'd-inline': 'd-none'}}">Solicitudes</span>
+    </button>
+  </div>
+  <div>
+    <button
+      class="d-flex btn btn-success-light justify-content-start align-items-center text-light py-1 my-2 w-100"
+    >
+      <i class="bi bi-envelope fs-3"></i><span class="fs-4 ps-3 {{visible ? 'd-inline': 'd-none'}}">Mensajes</span>
+    </button>
+  </div>
+  <div>
+    <button
+      class="d-flex btn btn-success-light justify-content-start align-items-center text-light py-1 my-2 w-100"
+    >
+      <i class="bi bi-graph-up fs-3"></i><span class="fs-4 ps-3 {{visible ? 'd-inline': 'd-none'}}">Estadísticas</span>
+    </button>
+  </div>
+  <div>
+    <button
+      class="d-flex btn btn-success-light justify-content-start align-items-center text-light py-1 my-2 w-100"
+    >
+      <i class="bi bi-person fs-3"></i><span class="fs-4 ps-3 {{visible ? 'd-inline': 'd-none'}}">Usuarios</span>
+    </button>
+  </div>
+  <div>
+    <button
+      class="d-flex btn btn-success-light justify-content-start align-items-center text-light py-1 my-2 w-100"
+    >
+      <i class="bi bi-person-video2 fs-3"></i><span class="fs-4 ps-3 {{visible ? 'd-inline': 'd-none'}}">Ajustes</span>
+    </button>
+  </div>
+  <div>
+    <button
+      class="d-flex btn btn-success-light justify-content-start align-items-center text-light py-1 my-2 w-100"
+    >
+      <i class="bi bi-pin-map fs-3"></i><span class="fs-4 ps-3 {{visible ? 'd-inline': 'd-none'}}">Zonas</span>
+    </button>
+  </div>
+  <div>
+    <button
+      class="d-flex btn btn-success-light justify-content-start align-items-center text-light py-1 my-2 w-100"
+    >
+      <i class="bi bi-cursor fs-3"></i><span class="fs-4 ps-3 {{visible ? 'd-inline': 'd-none'}}">Rutas</span>
+    </button>
+  </div>
+  <div>
+    <button
+      class="d-flex btn btn-success-light justify-content-start align-items-center text-light py-1 my-2 w-100"
+    >
+      <i class="bi bi-chat-left-dots fs-3"></i><span class="fs-4 ps-3 {{visible ? 'd-inline': 'd-none'}}">Comentarios</span>
+    </button>
+  </div>
+  <div>
+    <button
+      class="d-flex btn btn-success-light justify-content-start align-items-center text-light py-1 my-2 w-100"
+    >
+      <i class="bi bi-geo-alt fs-3"></i><span class="fs-4 ps-3 {{visible ? 'd-inline': 'd-none'}}">Objetos</span>
+    </button>
+  </div>
+  <div>
+    <button
+      class="d-flex btn btn-success-light justify-content-start align-items-center text-light py-1 my-2 w-100"
+    >
+      <i class="bi bi-question-diamond fs-3"></i><span class="fs-4 ps-3 {{visible ? 'd-inline': 'd-none'}}">Tipos</span>
+    </button>
+  </div>
+</div>

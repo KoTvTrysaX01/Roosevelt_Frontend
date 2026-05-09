@@ -23,11 +23,11 @@ $success-dark:darken($success, 20%);
 $danger-dark: darken($danger, 20%);
 
 $primary-light: lighten($primary, 20%);
-$secondary-light:lighten($primary, 20%);
-$warning-light: lighten($primary, 20%);
-$info-light: lighten($primary, 20%);
-$success-light:lighten($primary, 20%);
-$danger-light: lighten($primary, 20%);
+$secondary-light:lighten($secondary, 20%);
+$warning-light: lighten($warning, 20%);
+$info-light: lighten($info, 20%);
+$success-light:lighten($success, 20%);
+$danger-light: lighten($danger, 20%);
 
 
 @import "../node_modules/bootstrap/scss/functions";
