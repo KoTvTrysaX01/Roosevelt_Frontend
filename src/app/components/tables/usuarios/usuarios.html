@@ -1,0 +1,39 @@
+<div class="py-2">
+  <table class="table table-bordered table-striped fs-5">
+    <thead class="table-primary">
+      <tr>
+        @for (item of dataValues; track $index) {
+          <th>{{ item }}</th>
+        }
+      </tr>
+    </thead>
+    <tbody>
+      @for (item of dataArray; track $index) {
+        <tr>
+          <td>
+            <a [routerLink]="['form/zona?ver', '{{item.id}}']">{{ item.id }}</a>
+          </td>
+          <td>{{ item.username }}</td>
+          <td>{{ item.email }}</td>
+          <td>{{ item.email_sec }}</td>
+          <td>{{ item.tel }}</td>
+          <td>{{ item.fechaNac }}</td>
+          <td class="text-center fs-2 py-0">
+            @if (item.administrador == true) {
+              <i class="bi bi-check-circle-fill text-success"></i>
+            } @else {
+              <i class="bi bi-x-circle-fill text-danger"></i>
+            }
+          </td>
+          <td>
+            <div class="d-flex justify-content-around">
+              <button class="btn btn-primary-light mx-2 px-4" [routerLink]="['/admin']">Ver</button>
+              <button class="btn btn-info mx-2 px-3" [routerLink]="['/admin']">Editar</button>
+              <button class="btn btn-danger mx-2 px-3" (click)="({})">Borrar</button>
+            </div>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

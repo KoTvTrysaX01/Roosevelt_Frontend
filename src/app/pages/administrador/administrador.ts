@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { SideMenu } from "../../components/side-menu/side-menu";
+import { RouterOutlet } from "@angular/router";
 
 @Component({
   selector: 'app-administrador',
-  imports: [SideMenu],
+  imports: [SideMenu, RouterOutlet],
   templateUrl: './administrador.html',
   styleUrl: './administrador.scss',
 })

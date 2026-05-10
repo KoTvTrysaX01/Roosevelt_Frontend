@@ -1,0 +1,32 @@
+<div class="py-2">
+  <table class="table table-bordered table-striped fs-5">
+    <thead class="table-primary">
+      <tr>
+        @for (item of dataValues; track $index) {
+          <th>{{ item }}</th>
+        }
+      </tr>
+    </thead>
+    <tbody>
+      @for (item of dataArray; track $index) {
+        <tr>
+          <td>
+            <a [routerLink]="['form/zona?ver', '{{item.id}}']">{{ item.id }}</a>
+          </td>
+          <td>{{ item.titulo }}</td>
+          <td>{{ item.mensaje }}</td>
+          <td>{{ item.nombre }}</td>
+          <td>{{ item.email }}</td>
+          <td>{{ item.tel }}</td>
+          <td>{{ item.fecha_pub }}</td>
+          <td>
+            <div class="d-flex justify-content-around">
+              <button class="btn btn-primary-light mx-2 px-4" [routerLink]="['/admin']">Ver</button>
+              <button class="btn btn-danger mx-2 px-3" (click)="{}">Borrar</button>
+            </div>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>
