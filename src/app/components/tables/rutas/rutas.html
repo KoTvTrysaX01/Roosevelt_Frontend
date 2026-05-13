@@ -3,7 +3,7 @@
     <span class="fs-2 text-light fw-bold">Rutas</span>
     <button class="btn btn-info-light">Crear nueva</button>
   </div>
-  <table class="table table-bordered table-striped fs-5">
+  <table class="table table-bordered table-striped">
     <thead class="table-primary">
       <tr>
         @for (item of dataValues; track $index) {
@@ -28,7 +28,13 @@
           <td>{{ item.descripcion }}</td>
           <td>{{ item.fecha_pub }}</td>
           <td>{{ item.likesCount }}</td>
-          <td>{{ item.published }}</td>
+          <td class="text-center fs-2 py-0">
+            @if (item.published == true) {
+              <i class="bi bi-check-circle-fill text-success"></i>
+            } @else {
+              <i class="bi bi-x-circle-fill text-danger"></i>
+            }
+          </td>
           <td>
             <div class="d-flex justify-content-center">
               <button class="btn btn-primary-light mx-2 px-4" [routerLink]="['/admin']">Ver</button>

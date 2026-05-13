@@ -15,7 +15,7 @@ export class Ajustes implements OnInit{
   }
 
   http = inject(HttpClient);
-  dataValues = ["ID", "USUARIO ID", "TEMA", "IDIOMA", "FOTO", "NOTICIAS", "NOTIFICACIONES", "ACCIONES"];
+  dataValues = ["ID", "USUARIO ID", "TEMA", "IDIOMA", "FOTO", "NOTICIAS", "NOTIFICACIONES"];
   dataArray: any[] =  [];
 
   getApiData(){
