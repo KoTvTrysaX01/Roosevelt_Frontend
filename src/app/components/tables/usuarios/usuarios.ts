@@ -29,6 +29,8 @@ export class Usuarios implements OnInit {
   userForm!: FormGroup;
 
   // get & upload data
+  api_endpoint = 'usuarios';
+  href = `http://localhost:4200/admin/${this.api_endpoint}`;
   dataGet: any = {
     id: null,
     nombre: '',
@@ -103,7 +105,7 @@ export class Usuarios implements OnInit {
         Validators.pattern('^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$'),
       ]),
       password: new FormControl('', [Validators.required, Validators.maxLength(200)]),
-      administrador: new FormControl(''),
+      administrador: new FormControl(false),
     });
 
     if (this.userId == undefined) {
@@ -231,7 +233,7 @@ export class Usuarios implements OnInit {
   }
 
   getApi() {
-    this.http.get(`${environment.API_ROOSEVELT}/usuarios`).subscribe({
+    this.http.get(`${environment.API_ROOSEVELT}/${this.api_endpoint}`).subscribe({
       next: (result: any) => {
         this.dataArray = result;
       },
@@ -239,32 +241,32 @@ export class Usuarios implements OnInit {
   }
 
   getOneApi() {
-    this.http.get(`${environment.API_ROOSEVELT}/usuarios/${this.userId}`).subscribe({
+    this.http.get(`${environment.API_ROOSEVELT}/${this.api_endpoint}/${this.userId}`).subscribe({
       next: (result: any) => {
         this.dataArray[0] = result;
       },
     });
   }
   postApi() {
-    this.http.post(`${environment.API_ROOSEVELT}/usuarios`, this.dataPostPut).subscribe({
+    this.http.post(`${environment.API_ROOSEVELT}/${this.api_endpoint}`, this.dataPostPut).subscribe({
       next: (result) => {
-        window.location.href = 'http://localhost:4200/admin/usuarios';
+        window.location.href = this.href;
       },
     });
   }
 
   deleteApi() {
-    this.http.delete(`${environment.API_ROOSEVELT}/usuarios/${this.idDelete}`).subscribe({
+    this.http.delete(`${environment.API_ROOSEVELT}/${this.api_endpoint}/${this.idDelete}`).subscribe({
       next: (result) => {
-        window.location.href = 'http://localhost:4200/admin/usuarios';
+        window.location.href = this.href;
       },
     });
   }
 
   putApi() {
-    this.http.put(`${environment.API_ROOSEVELT}/usuarios`, this.dataPostPut).subscribe({
+    this.http.put(`${environment.API_ROOSEVELT}/${this.api_endpoint}`, this.dataPostPut).subscribe({
       next: (resutl) => {
-        window.location.href = 'http://localhost:4200/admin/usuarios';
+        window.location.href = this.href;
       },
     });
   }

@@ -94,7 +94,7 @@ export const routes: Routes = [
         component: Objetos,
       },
       {
-        path: 'tipos',
+        path: 'tiposobjeto',
         component: Tipos,
       },
       //----------------------------------- Specific Register -----------------------------------
@@ -132,7 +132,7 @@ export const routes: Routes = [
         component: Objetos,
       },
       {
-        path: 'tipos/:id',
+        path: 'tiposobjeto/:id',
         component: Tipos,
       },
     ],

@@ -16,7 +16,7 @@
         @for (item of dataArray; track $index) {
           <tr>
             <td>
-              <a [routerLink]="['/admin/usuarios', item.id]">{{ item.id }}</a>
+              <a [routerLink]="[`/admin/${api_endpoint}`, item.id]">{{ item.id }}</a>
             </td>
             <td>{{ item.nombre }}</td>
             <td>{{ item.apellido }}</td>
