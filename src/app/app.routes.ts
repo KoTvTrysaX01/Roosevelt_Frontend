@@ -20,11 +20,6 @@ import { Comentarios } from './components/tables/comentarios/comentarios';
 import { Objetos } from './components/tables/objetos/objetos';
 import { Tipos } from './components/tables/tipos/tipos';
 import { Testapi } from './components/testapi/testapi';
-import { UsuarioForm } from './components/forms/usuario-form/usuario-form';
-import { ZonaForm } from './components/forms/zona-form/zona-form';
-import { RutaForm } from './components/forms/ruta-form/ruta-form';
-import { ObjetoForm } from './components/forms/objeto-form/objeto-form';
-import { TipoForm } from './components/forms/tipo-form/tipo-form';
 
 export const routes: Routes = [
   {
@@ -60,7 +55,7 @@ export const routes: Routes = [
     path: 'admin',
     component: Administrador,
     children: [
-      //----------------------------------- Tables ----------------------------------- 
+      //----------------------------------- Tables -----------------------------------
       {
         path: 'solicitudes',
         component: Solicitudes,
@@ -102,48 +97,44 @@ export const routes: Routes = [
         path: 'tipos',
         component: Tipos,
       },
-      //----------------------------------- Forms: New Object -----------------------------------
+      //----------------------------------- Specific Register -----------------------------------
       {
-        path: 'usuario-form',
-        component: UsuarioForm,
+        path: 'solicitudes/:id',
+        component: Solicitudes,
+        pathMatch: 'full',
       },
       {
-        path: 'zona-form',
-        component: ZonaForm,
+        path: 'mensajes/:id',
+        component: Mensajes,
       },
       {
-        path: 'ruta-form',
-        component: RutaForm,
+        path: 'usuarios/:id',
+        component: Usuarios,
       },
       {
-        path: 'objeto-form',
-        component: ObjetoForm,
+        path: 'ajustes/:id',
+        component: Ajustes,
       },
       {
-        path: 'tipo-form',
-        component: TipoForm,
-      },
-      //----------------------------------- Forms: Edit Object -----------------------------------
-            {
-        path: 'usuario-form/:id',
-        component: UsuarioForm,
+        path: 'zonas/:id',
+        component: Zonas,
       },
       {
-        path: 'zona-form/:id',
-        component: ZonaForm,
+        path: 'rutas/:id',
+        component: Rutas,
       },
       {
-        path: 'ruta-form/:id',
-        component: RutaForm,
+        path: 'comentarios/:id',
+        component: Comentarios,
       },
       {
-        path: 'objeto-form/:id',
-        component: ObjetoForm,
+        path: 'objetos/:id',
+        component: Objetos,
       },
       {
-        path: 'tipo-form/:id',
-        component: TipoForm,
-      }
+        path: 'tipos/:id',
+        component: Tipos,
+      },
     ],
   },
   {

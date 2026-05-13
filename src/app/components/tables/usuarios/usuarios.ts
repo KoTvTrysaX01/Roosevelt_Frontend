@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, inject, OnInit } from '@angular/core';
 import { environment } from '../../../../environments/environment.development';
-import { Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import {
   FormControl,
   FormGroup,
@@ -18,11 +18,19 @@ import { CommonModule } from '@angular/common';
   styleUrl: './usuarios.scss',
 })
 
- // I am so sorry for what I've done here
+// I am so sorry for everything I've done here
 export class Usuarios implements OnInit {
+  // functions
+  private http = inject(HttpClient);
+  private activatedRoute = inject(ActivatedRoute);
 
-  router: any;
+  // id & form
+  userId: any;
+  userForm!: FormGroup;
+
+  // get & upload data
   dataGet: any = {
+    id: null,
     nombre: '',
     apellido: '',
     username: '',
@@ -33,7 +41,6 @@ export class Usuarios implements OnInit {
     tel: '',
     fechaNac: '',
   };
-
   dataPostPut: any = {
     id: null,
     nombre: '',
@@ -46,8 +53,65 @@ export class Usuarios implements OnInit {
     tel: '',
     fechaNac: '',
   };
-
   idDelete: any = null;
+
+  // fill table data
+  dataValues = [
+    'ID',
+    'NOMBRE',
+    'APELLIDO',
+    'USERNAME',
+    'CORREO',
+    'CORREO SECUNDARIO',
+    'TELÉFONO',
+    'FECHA DE NACIMIENTO',
+    'ADMINISTRADOR',
+    'ACCIONES',
+  ];
+  dataArray: any[] = [];
+
+  ngOnInit(): void {
+    this.activatedRoute.params.subscribe((params) => {
+      this.userId = params['id'];
+    });
+
+    this.userForm = new FormGroup({
+      nombre: new FormControl('', [
+        Validators.required,
+        Validators.pattern('^([a-zA-Z\s]+)$'),
+        Validators.maxLength(50),
+      ]),
+      apellido: new FormControl('', [
+        Validators.required,
+        Validators.pattern('^([a-zA-Z\s]+)$'),
+        Validators.maxLength(50),
+      ]),
+      username: new FormControl('', [
+        Validators.required,
+        Validators.pattern('^([a-zA-Z0-9]+)$'),
+        Validators.maxLength(50),
+      ]),
+      fechaNac: new FormControl('', [Validators.required]),
+      email: new FormControl('', [
+        Validators.required,
+        Validators.email,
+        Validators.maxLength(100),
+      ]),
+      email_sec: new FormControl('', [Validators.email, Validators.maxLength(100)]),
+      tel: new FormControl('', [
+        Validators.required,
+        Validators.pattern('^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$'),
+      ]),
+      password: new FormControl('', [Validators.required, Validators.maxLength(200)]),
+      administrador: new FormControl(''),
+    });
+
+    if (this.userId == undefined) {
+      this.getApi();
+    } else {
+      this.getOneApi();
+    }
+  }
 
   openFormModal(data: any | undefined) {
     const modelDiv = document.getElementById('formModal');
@@ -117,96 +181,25 @@ export class Usuarios implements OnInit {
     }
   }
 
-  doAlsoh() {
-    console.log('algo');
-  }
-
-  userForm!: FormGroup;
-  ngOnInit(): void {
-    this.userForm = new FormGroup({
-      nombre: new FormControl('', [Validators.required]),
-      apellido: new FormControl('', [Validators.required]),
-      username: new FormControl('', [Validators.required]),
-      fechaNac: new FormControl('', [Validators.required]),
-      email: new FormControl('', [Validators.required, Validators.email]),
-      email_sec: new FormControl('', [Validators.email]),
-      tel: new FormControl('', [Validators.required]),
-      password: new FormControl('', [Validators.required]),
-      administrador: new FormControl(''),
-    });
-
-    this.getApiData();
-  }
-
-  http = inject(HttpClient);
-  dataValues = [
-    'ID',
-    'NOMBRE',
-    'APELLIDO',
-    'USERNAME',
-    'CORREO',
-    'CORREO SECUNDARIO',
-    'TELÉFONO',
-    'FECHA DE NACIMIENTO',
-    'ADMINISTRADOR',
-    'ACCIONES',
-  ];
-  dataArray: any[] = [];
-
-  getApiData() {
-    this.http.get(`${environment.API_ROOSEVELT}/usuarios`).subscribe({
-      next: (result: any) => {
-        this.dataArray = result;
-      },
-    });
-  }
-
-  postApi() {
-    this.http.post(`${environment.API_ROOSEVELT}/usuarios`, this.dataPostPut).subscribe({
-      next: (result) => {
-        window.location.href = 'http://localhost:4200/admin/usuarios';
-      },
-    });
-  }
-
-  deleteApi() {
-    this.http.delete(`${environment.API_ROOSEVELT}/usuarios/${this.idDelete}`).subscribe({
-      next: (result) => {
-        window.location.href = 'http://localhost:4200/admin/usuarios';
-      },
-    });
-  }
-
-  putApi() {
-    this.http.put(`${environment.API_ROOSEVELT}/usuarios`, this.dataPostPut).subscribe({
-      next: (resutl) => {
-        window.location.href = 'http://localhost:4200/admin/usuarios';
-      },
-    });
-  }
-
   validateData() {
-    debugger;
-
-    if(this.dataGet.id != null){
+    if (this.dataGet.id != null) {
       this.userForm.controls?.['password'].valid;
     }
 
-    if(this.dataGet.password != null && (this.userForm.controls?.["password"].value == null || this.userForm.controls?.["password"].value == '')){
-      this.userForm.controls?.["password"].setValue(this.dataGet.password);
+    if (
+      this.dataGet.password != null &&
+      (this.userForm.controls?.['password'].value == null ||
+        this.userForm.controls?.['password'].value == '')
+    ) {
+      this.userForm.controls?.['password'].setValue(this.dataGet.password);
     }
 
-
     if (this.userForm?.valid) {
-      this.dataPostPut['nombre'] = this.userForm.controls?.['nombre'].value;
-      this.dataPostPut['apellido'] = this.userForm.controls?.['apellido'].value;
-      this.dataPostPut['username'] = this.userForm.controls?.['username'].value;
-      this.dataPostPut['fechaNac'] = this.userForm.controls?.['fechaNac'].value;
-      this.dataPostPut['email'] = this.userForm.controls?.['email'].value;
-      this.dataPostPut['tel'] = this.userForm.controls?.['tel'].value;
-      this.dataPostPut['password'] = this.userForm.controls?.['password'].value;
-      this.dataPostPut['administrador'] = this.userForm.controls?.['administrador'].value;
-      this.dataPostPut['email_sec'] = this.userForm.controls?.['email_sec'].value;
+      for (const key in this.dataPostPut) {
+        if (key != 'id') {
+          this.dataPostPut[key] = this.userForm.controls?.[key].value;
+        }
+      }
 
       if (this.dataGet.id == null) {
         this.postApi();
@@ -235,5 +228,44 @@ export class Usuarios implements OnInit {
   resetValidated() {
     const myForm = document.getElementById('myForm');
     myForm?.classList.remove('was-validated');
+  }
+
+  getApi() {
+    this.http.get(`${environment.API_ROOSEVELT}/usuarios`).subscribe({
+      next: (result: any) => {
+        this.dataArray = result;
+      },
+    });
+  }
+
+  getOneApi() {
+    this.http.get(`${environment.API_ROOSEVELT}/usuarios/${this.userId}`).subscribe({
+      next: (result: any) => {
+        this.dataArray[0] = result;
+      },
+    });
+  }
+  postApi() {
+    this.http.post(`${environment.API_ROOSEVELT}/usuarios`, this.dataPostPut).subscribe({
+      next: (result) => {
+        window.location.href = 'http://localhost:4200/admin/usuarios';
+      },
+    });
+  }
+
+  deleteApi() {
+    this.http.delete(`${environment.API_ROOSEVELT}/usuarios/${this.idDelete}`).subscribe({
+      next: (result) => {
+        window.location.href = 'http://localhost:4200/admin/usuarios';
+      },
+    });
+  }
+
+  putApi() {
+    this.http.put(`${environment.API_ROOSEVELT}/usuarios`, this.dataPostPut).subscribe({
+      next: (resutl) => {
+        window.location.href = 'http://localhost:4200/admin/usuarios';
+      },
+    });
   }
 }
