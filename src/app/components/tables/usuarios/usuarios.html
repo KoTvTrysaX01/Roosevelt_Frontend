@@ -71,7 +71,7 @@
       <!-- Modal Header -->
       <div class="modal-header">
         <h4 class="modal-title">
-          {{ dataGet.id == null ? 'Crear Usuario' : 'Actualizar Usuario' }}
+          {{ dataGet.id == null ? 'Crear' : 'Actualizar' }} Usuario
         </h4>
         <button
           type="button"
@@ -125,7 +125,7 @@
               value="{{ dataGet.apellido }}"
               name="apellido"
               class="form-control"
-              id="field_apellido"
+              id="apellido_field"
               placeholder="Introduce tu apellido"
               [class.is-invalid]="
                 userForm?.controls?.['apellido']?.invalid &&
@@ -260,7 +260,7 @@
             <!-- Modal footer -->
             <div class="modal-footer w-100 justify-content-center justify-content-lg-between px-0">
               <button type="submit" class="btn btn-primary">
-                {{ dataGet.id == null ? 'Crear Usuario' : 'Actualizar Usuario' }}
+                {{ dataGet.id == null ? 'Crear' : 'Actualizar' }} Usuario
               </button>
               <div>
                 <button class="btn btn-primary me-2" type="reset">Restablecer</button>
@@ -280,42 +280,3 @@
     </div>
   </div>
 </div>
-
-<!-- // for ajuestes -->
-<!-- <div class="bg-primary-light text-light border-1 border-top border-primary">Ajustes</div>
-      <div class="col-md-6">
-        <label for="tema_field" class="form-label">Tema</label>
-        <select [(ngModel)]="dataObjAjustes.tema" name="tema" class="form-select" id="tema_field">
-          <option selected disabled value="">Selecciona tu tema</option>
-          <option>Light</option>
-          <option>Dark</option>
-          <option>System</option>
-        </select>
-        <div class="invalid-feedback">Please select a valid state.</div>
-      </div>
-      <div class="col-md-6">
-        <label for="idioma_field" class="form-label">Idioma</label>
-        <select [(ngModel)]="dataObjAjustes.idioma" name="idioma" class="form-select" id="idioma_field">
-          <option selected disabled value="">Selecciona tu idioma</option>
-          <option>English</option>
-          <option>Spanish</option>
-          <option>Russian</option>
-        </select>
-        <div class="invalid-feedback">Please select a valid state.</div>
-      </div>
-      <div class="col-md-12">
-        <label for="formFile" class="form-label">Imagen de Profile</label>
-        <input [(ngModel)]="dataObjAjustes.foto" name="foto" class="form-control" type="file" id="formFile" />
-      </div>
-      <div class="col-6">
-        <div class="form-check">
-          <input [(ngModel)]="dataObjAjustes.recibir_noticias" name="recibir_noticias" class="form-check-input" type="checkbox" value="" id="notic_check" />
-          <label class="form-check-label" for="notic_check"> Recibir noticias? </label>
-        </div>
-      </div>
-      <div class="col-6">
-        <div class="form-check">
-          <input [(ngModel)]="dataObjAjustes.recibir_notificaciones" name="recibir_notificaciones" class="form-check-input" type="checkbox" value="" id="notif_check" />
-          <label class="form-check-label" for="notif_check"> Recibir notificaciones? </label>
-        </div>
-      </div> -->

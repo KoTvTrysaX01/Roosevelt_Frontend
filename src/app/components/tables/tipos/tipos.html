@@ -59,7 +59,7 @@
       <!-- Modal Header -->
       <div class="modal-header">
         <h4 class="modal-title">
-          {{ dataGet.id == null ? 'Crear Tipo' : 'Actualizar Tipo' }}
+          {{ dataGet.id == 0 ? 'Crear' : 'Actualizar' }} Tipo
         </h4>
         <button
           type="button"
@@ -127,7 +127,7 @@
             <!-- Modal footer -->
             <div class="modal-footer w-100 justify-content-center justify-content-lg-between px-0">
               <button type="submit" class="btn btn-primary">
-                {{ dataGet.id == 0 ? 'Crear Tipo' : 'Actualizar Tipo' }}
+                {{ dataGet.id == 0 ? 'Crear' : 'Actualizar' }} Tipo
               </button>
               <div>
                 <button class="btn btn-primary me-2" type="reset">Restablecer</button>

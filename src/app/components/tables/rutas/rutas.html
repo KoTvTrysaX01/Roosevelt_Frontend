@@ -1,48 +1,264 @@
 <div class="my-2 p-2 bg-secondary rounded rounded-2">
-  <div class="d-flex justify-content-between align-items-center">
-    <span class="fs-2 text-light fw-bold">Rutas</span>
-    <button class="btn btn-info-light">Crear nueva</button>
-  </div>
-  <table class="table table-bordered table-striped">
-    <thead class="table-primary">
-      <tr>
-        @for (item of dataValues; track $index) {
-          <th>{{ item }}</th>
-        }
-      </tr>
-    </thead>
-    <tbody>
-      @for (item of dataArray; track $index) {
+  <div class="table-responsive">
+    <div class="d-flex justify-content-start justify-content-lg-between align-items-center mb-1">
+      <span class="fs-2 text-light fw-bold pe-3">Objetos</span>
+      <button class="btn btn-info-light" (click)="openFormModal(null)">Crear nuevo</button>
+    </div>
+    <table class="table table-bordered table-striped">
+      <thead class="table-primary">
         <tr>
-          <td>
-            <a [routerLink]="['form/zona?ver', '{{item.id}}']">{{ item.id }}</a>
-          </td>
-          <td>
-            <a [routerLink]="['form/zona?ver', '{{item.id}}']">{{ item.zona.id }}</a>
-          </td>
-          <td>
-            <a [routerLink]="['form/zona?ver', '{{item.id}}']">{{ item.usuario_autor.id }}</a>
-          </td>
-          <td>{{ item.nombreRuta }}</td>
-          <td>{{ item.mapboxJSON }}</td>
-          <td>{{ item.descripcion }}</td>
-          <td>{{ item.fecha_pub }}</td>
-          <td>{{ item.likesCount }}</td>
-          <td class="text-center fs-2 py-0">
-            @if (item.published == true) {
-              <i class="bi bi-check-circle-fill text-success"></i>
-            } @else {
-              <i class="bi bi-x-circle-fill text-danger"></i>
-            }
-          </td>
-          <td>
-            <div class="d-flex justify-content-center">
-              <button class="btn btn-primary-light mx-2 px-4" [routerLink]="['/admin']">Ver</button>
-              <button class="btn btn-danger mx-2 px-3" (click)="({})">Borrar</button>
-            </div>
-          </td>
+          @for (item of dataValues; track $index) {
+            <th>{{ item }}</th>
+          }
         </tr>
-      }
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+        @for (item of dataArray; track $index) {
+          <tr>
+            <td>
+              <a [routerLink]="[`/admin/${api_endpoint}`, item.id]">{{ item.id }}</a>
+            </td>
+            <td>
+              <a [routerLink]="[`/admin/usuarios`, item.usuario_autor.id]">{{
+                item.usuario_autor.id
+              }}</a>
+            </td>
+            <td>
+              <a [routerLink]="[`/admin/zonas`, item.zona.id]">{{ item.zona.id }}</a>
+            </td>
+            <td>{{ item.nombreRuta }}</td>
+            <td>{{ item.descripcion }}</td>
+            <td>{{ item.fecha_pub }}</td>
+            <td>{{ item.likesCount }}</td>
+            <td class="text-center fs-2 py-0">
+              @if (item.published == true) {
+                <i class="bi bi-check-circle-fill text-success"></i>
+              } @else {
+                <i class="bi bi-x-circle-fill text-danger"></i>
+              }
+            </td>
+            <td>
+              <div class="d-flex justify-content-center">
+                <button class="btn btn-primary-light mx-2 px-4" (click)="openFormModal(item)">
+                  Ver
+                </button>
+                <button class="btn btn-danger mx-2 px-3" (click)="openDeleteModal(item.id)">
+                  Borrar
+                </button>
+              </div>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="modal" id="deleteModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header d-flex justify-content-center">
+        <h4>¿Eliminar el registro?</h4>
+      </div>
+      <div class="modal-body">
+        <div class="d-flex justify-content-evenly">
+          <button class="btn btn-lg btn-danger" (click)="deleteApi()">Eliminar</button>
+          <button class="btn btn-lg btn-success" (click)="closeDeleteModal()">Cancelar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="formModal">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">{{ dataGet.id == 0 ? 'Crear' : 'Actualizar' }} Ruta</h4>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          (click)="closeFormModal()"
+        ></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <form
+          [formGroup]="rutaForm"
+          (ngSubmit)="validateData()"
+          id="myForm"
+          class="row needs-validation px-3 gy-4 gx-5"
+        >
+          <div class="col-md-12 {{ dataGet.id == 0 ? 'd-none' : '' }}">
+            <label for="id_field" class="form-label">ID</label>
+            <input
+              type="text"
+              class="form-control"
+              id="id_field"
+              value="{{ dataGet.id }}"
+              disabled
+              readonly
+            />
+          </div>
+          <div class="col-md-6">
+            <label for="id_usuario_field" class="form-label">ID Usuario Autor</label>
+            <input
+              type="number"
+              formControlName="id_usuario"
+              class="form-control"
+              id="id_usuario_field"
+              value="{{ dataGet.usuario_autor.id }}"
+              [class.is-invalid]="
+                rutaForm?.controls?.['id_usuario']?.invalid &&
+                rutaForm?.controls?.['id_usuario']?.touched
+              "
+              required
+            />
+          </div>
+          <div class="col-md-6">
+            <label for="id_zona_field" class="form-label">ID Zona</label>
+            <input
+              type="number"
+              formControlName="id_zona"
+              class="form-control"
+              id="id_zona_field"
+              value="{{ dataGet.zona.id }}"
+              [class.is-invalid]="
+                rutaForm?.controls?.['id_zona']?.invalid && rutaForm?.controls?.['id_zona']?.touched
+              "
+              required
+            />
+          </div>
+
+          <div class="col-md-12">
+            <label for="nombreRuta_field" class="form-label">Nombre de Ruta</label>
+            <input
+              formControlName="nombreRuta"
+              type="text"
+              value="{{ dataGet.nombre_objeto }}"
+              name="nombreRuta_ruta"
+              class="form-control"
+              id="nombreRuta_field"
+              placeholder="Introduce el nombre de ruta"
+              [class.is-invalid]="
+                rutaForm?.controls?.['nombreRuta']?.invalid &&
+                rutaForm?.controls?.['nombreRuta']?.touched
+              "
+              required
+            />
+            <div class="invalid-feedback">Vacío | Formato no válido</div>
+          </div>
+          <div class="col-md-12">
+            <label for="descripcion_field" class="form-label">Descripción</label>
+            <textarea
+              formControlName="descripcion"
+              type="text"
+              value="{{ dataGet.mapbox_json }}"
+              name="descripcion"
+              class="form-control"
+              id="descripcion_field"
+              placeholder="Introduce la coordenadas"
+              [class.is-invalid]="
+                rutaForm?.controls?.['descripcion']?.invalid &&
+                rutaForm?.controls?.['descripcion']?.touched
+              "
+              rows="3"
+              required
+            ></textarea>
+
+            <div class="invalid-feedback">Vacío | Formato no válido</div>
+          </div>
+          <div class="col-md-12">
+            <label for="mapboxJSON_field" class="form-label">Coordenadas</label>
+            <textarea
+              formControlName="mapboxJSON"
+              type="text"
+              value="{{ dataGet.mapboxJSON }}"
+              name="mapboxJSON"
+              class="form-control"
+              id="mapboxJSON_field"
+              placeholder="Introduce las coordenadas"
+              [class.is-invalid]="
+                rutaForm?.controls?.['mapboxJSON']?.invalid &&
+                rutaForm?.controls?.['mapboxJSON']?.touched
+              "
+              rows="5"
+              required
+            ></textarea>
+
+            <div class="invalid-feedback">Vacío | Formato no válido</div>
+          </div>
+          <div class="col-md-6">
+            <label for="fecha_pub_field" class="form-label">Fecha de Creación</label>
+            <input
+              type="date"
+              formControlName="fecha_pub"
+              value="{{ dataGet.fechaNac }}"
+              name="fecha_pub"
+              class="form-control"
+              id="fecha_pub_field"
+              placeholder="Introduce tu fecha de nacimineto"
+              [class.is-invalid]="
+                rutaForm?.controls?.['fecha_pub']?.invalid &&
+                rutaForm?.controls?.['fecha_pub']?.touched
+              "
+              required
+            />
+
+            <div class="invalid-feedback">Vacío | Formato no válido</div>
+          </div>
+          <div class="col-md-6">
+            <label for="likesCount_field" class="form-label">Likes</label>
+            <input
+              type="number"
+              val
+              formControlName="likesCount"
+              class="form-control"
+              id="likesCount_field"
+              value="{{ dataGet.likesCount }}"
+              [class.is-invalid]="
+                rutaForm?.controls?.['likesCount']?.invalid &&
+                rutaForm?.controls?.['likesCount']?.touched
+              "
+            />
+          </div>
+          <div class="col-6">
+            <div class="form-check">
+              <input
+                formControlName="published"
+                class="form-check-input"
+                type="checkbox"
+                value="{{ dataGet.published }}"
+                name="published"
+                id="published_check"
+              />
+              <label class="form-check-label" for="published_check">Público</label>
+            </div>
+          </div>
+          <div class="col-12 d-flex justify-content-between">
+            <!-- Modal footer -->
+            <div class="modal-footer w-100 justify-content-center justify-content-lg-between px-0">
+              <button type="submit" class="btn btn-primary">
+                {{ dataGet.id == 0 ? 'Crear' : 'Actualizar' }} Ruta
+              </button>
+              <div>
+                <button class="btn btn-primary me-2" type="reset">Restablecer</button>
+                <button
+                  type="button"
+                  class="btn btn-danger ms-2 px-4"
+                  data-bs-dismiss="modal"
+                  (click)="closeFormModal()"
+                >
+                  Cerrar
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
 </div>

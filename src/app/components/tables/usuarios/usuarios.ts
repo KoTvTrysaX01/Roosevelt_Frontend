@@ -41,7 +41,7 @@ export class Usuarios implements OnInit {
     password: '',
     administrador: false,
     tel: '',
-    fechaNac: '',
+    fechaNac: ''
   };
   dataPostPut: any = {
     id: null,
@@ -53,7 +53,7 @@ export class Usuarios implements OnInit {
     password: '',
     administrador: false,
     tel: '',
-    fechaNac: '',
+    fechaNac: ''
   };
   idDelete: any = null;
 
@@ -80,12 +80,12 @@ export class Usuarios implements OnInit {
     this.userForm = new FormGroup({
       nombre: new FormControl('', [
         Validators.required,
-        Validators.pattern('^([a-zA-Z\s]+)$'),
+        Validators.pattern('^([a-zA-Z\\s]+)$'),
         Validators.maxLength(50),
       ]),
       apellido: new FormControl('', [
         Validators.required,
-        Validators.pattern('^([a-zA-Z\s]+)$'),
+        Validators.pattern('^([a-zA-Z\\s]+)$'),
         Validators.maxLength(50),
       ]),
       username: new FormControl('', [
@@ -184,10 +184,6 @@ export class Usuarios implements OnInit {
   }
 
   validateData() {
-    if (this.dataGet.id != null) {
-      this.userForm.controls?.['password'].valid;
-    }
-
     if (
       this.dataGet.password != null &&
       (this.userForm.controls?.['password'].value == null ||
