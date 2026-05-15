@@ -41,7 +41,7 @@ export class Usuarios implements OnInit {
     password: '',
     administrador: false,
     tel: '',
-    fechaNac: ''
+    fechaNac: '',
   };
   dataPostPut: any = {
     id: null,
@@ -53,7 +53,7 @@ export class Usuarios implements OnInit {
     password: '',
     administrador: false,
     tel: '',
-    fechaNac: ''
+    fechaNac: '',
   };
   idDelete: any = null;
 
@@ -233,6 +233,9 @@ export class Usuarios implements OnInit {
       next: (result: any) => {
         this.dataArray = result;
       },
+      error: (error) => {
+        alert('Error al obtener los registros');
+      },
     });
   }
 
@@ -241,28 +244,44 @@ export class Usuarios implements OnInit {
       next: (result: any) => {
         this.dataArray[0] = result;
       },
+      error: (error) => {
+        alert('Error al obtener el registro');
+      },
     });
   }
   postApi() {
-    this.http.post(`${environment.API_ROOSEVELT}/${this.api_endpoint}`, this.dataPostPut).subscribe({
-      next: (result) => {
-        window.location.href = this.href;
-      },
-    });
+    this.http
+      .post(`${environment.API_ROOSEVELT}/${this.api_endpoint}`, this.dataPostPut)
+      .subscribe({
+        next: (result) => {
+          window.location.href = this.href;
+        },
+        error: (error) => {
+          alert('Error al publicar el registro');
+        },
+      });
   }
 
   deleteApi() {
-    this.http.delete(`${environment.API_ROOSEVELT}/${this.api_endpoint}/${this.idDelete}`).subscribe({
-      next: (result) => {
-        window.location.href = this.href;
-      },
-    });
+    this.http
+      .delete(`${environment.API_ROOSEVELT}/${this.api_endpoint}/${this.idDelete}`)
+      .subscribe({
+        next: (result) => {
+          window.location.href = this.href;
+        },
+        error: (error) => {
+          alert('Error al eliminar el registro');
+        },
+      });
   }
 
   putApi() {
     this.http.put(`${environment.API_ROOSEVELT}/${this.api_endpoint}`, this.dataPostPut).subscribe({
       next: (resutl) => {
         window.location.href = this.href;
+      },
+      error: (error) => {
+        alert('Error al actualizar el registro');
       },
     });
   }

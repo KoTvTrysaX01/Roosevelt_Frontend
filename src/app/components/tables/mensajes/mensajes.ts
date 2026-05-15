@@ -37,7 +37,7 @@ export class Mensajes implements OnInit {
     nombre: '',
     email: '',
     tel: '',
-    fecha_pub: ''
+    fecha_pub: '',
   };
   idDelete: any = null;
 
@@ -58,8 +58,6 @@ export class Mensajes implements OnInit {
     this.activatedRoute.params.subscribe((params) => {
       this.mensajeId = params['id'];
     });
-
-
 
     if (this.mensajeId == undefined) {
       this.getApi();
@@ -88,6 +86,9 @@ export class Mensajes implements OnInit {
       next: (result: any) => {
         this.dataArray = result;
       },
+      error: (error) => {
+        alert('Error al obtener los registros');
+      },
     });
   }
 
@@ -96,15 +97,22 @@ export class Mensajes implements OnInit {
       next: (result: any) => {
         this.dataArray[0] = result;
       },
-    });
-  }
-
-  deleteApi() {
-    this.http.delete(`${environment.API_ROOSEVELT}/${this.api_endpoint}/${this.idDelete}`).subscribe({
-      next: (result) => {
-        window.location.href = this.href;
+      error: (error) => {
+        alert('Error al obtener el registro');
       },
     });
   }
 
+  deleteApi() {
+    this.http
+      .delete(`${environment.API_ROOSEVELT}/${this.api_endpoint}/${this.idDelete}`)
+      .subscribe({
+        next: (result) => {
+          window.location.href = this.href;
+        },
+        error: (error) => {
+          alert('Error al eliminar el registro');
+        },
+      });
+  }
 }

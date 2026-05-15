@@ -20,7 +20,6 @@ import { CommonModule } from '@angular/common';
 
 // I am so sorry for everything I've done here
 export class Tipos implements OnInit {
-  
   // functions
   private http = inject(HttpClient);
   private activatedRoute = inject(ActivatedRoute);
@@ -160,6 +159,9 @@ export class Tipos implements OnInit {
       next: (result: any) => {
         this.dataArray = result;
       },
+      error: (error) => {
+        alert('Error al eliminar los registros');
+      },
     });
   }
 
@@ -167,6 +169,9 @@ export class Tipos implements OnInit {
     this.http.get(`${environment.API_ROOSEVELT}/${this.api_endpoint}/${this.tipoId}`).subscribe({
       next: (result: any) => {
         this.dataArray[0] = result;
+      },
+      error: (error) => {
+        alert('Error al obtener el registro');
       },
     });
   }
@@ -176,6 +181,9 @@ export class Tipos implements OnInit {
       .subscribe({
         next: (result) => {
           window.location.href = this.href;
+        },
+        error: (error) => {
+          alert('Error al publicar el registro');
         },
       });
   }
@@ -187,6 +195,9 @@ export class Tipos implements OnInit {
         next: (result) => {
           window.location.href = this.href;
         },
+        error: (error) => {
+          alert('Error al eliminar el registro');
+        },
       });
   }
 
@@ -194,6 +205,9 @@ export class Tipos implements OnInit {
     this.http.put(`${environment.API_ROOSEVELT}/${this.api_endpoint}`, this.dataPostPut).subscribe({
       next: (resutl) => {
         window.location.href = this.href;
+      },
+      error: (error) => {
+        alert('Error al actualizar el registro');
       },
     });
   }

@@ -121,7 +121,6 @@ export class Solicitudes implements OnInit {
     }
   }
 
-
   // Will clean only if have time. It's 01:51
   openDecisionModal(data: any, decision: any) {
     this.titulo = decision;
@@ -141,7 +140,8 @@ export class Solicitudes implements OnInit {
     this.dataSolicitudPut.solicitudId.ruta.id = data.solicitudId.ruta.id;
     this.dataSolicitudPut.solicitudId.ruta.likesCount = data.solicitudId.ruta.likesCount;
     this.dataSolicitudPut.solicitudId.usuario.id = data.solicitudId.usuario.id;
-    this.dataSolicitudPut.solicitudId.usuario.administrador = data.solicitudId.usuario.administrador;
+    this.dataSolicitudPut.solicitudId.usuario.administrador =
+      data.solicitudId.usuario.administrador;
     this.dataSolicitudPut.fecha_pub = data.fecha_pub;
 
     if (decision == 'Acceptar') {
@@ -168,6 +168,8 @@ export class Solicitudes implements OnInit {
     if (modelDiv != null) {
       modelDiv.style.display = 'none';
     }
+
+    window.location.href = this.href;
   }
 
   makeDecision() {
@@ -175,23 +177,36 @@ export class Solicitudes implements OnInit {
     // this.putApi('solicitudes', this.dataSolicitudPut);
     // this.putApi('rutas', this.dataSolicitudPut.solicitudId.ruta);
 
-     this.http.put(`${environment.API_ROOSEVELT}/rutas`, this.rutaPut).subscribe({
-       next: (resutl) => {
-         // window.location.href = this.href;
-       },
-     });
+    this.http.put(`${environment.API_ROOSEVELT}/rutas`, this.rutaPut).subscribe({
+      next: (resutl) => {
+        // window.location.href = this.href;
+        alert('Éxito!');
+      },
+      error: (error) => {
+        alert('Error al actualizar el registro');
+      },
+    });
 
     this.http.put(`${environment.API_ROOSEVELT}/solicitudes`, this.dataSolicitudPut).subscribe({
       next: (resutl) => {
         // window.location.href = this.href;
+        alert('Éxito!');
+      },
+      error: (error) => {
+        alert('Error al actualizar el registro');
       },
     });
+
+   
   }
 
   getApi() {
     this.http.get(`${environment.API_ROOSEVELT}/${this.api_endpoint}/nuevas`).subscribe({
       next: (result: any) => {
         this.dataArray = result;
+      },
+      error: (error) => {
+        alert('Error al obtener los registros');
       },
     });
   }
@@ -203,6 +218,9 @@ export class Solicitudes implements OnInit {
         next: (result: any) => {
           this.dataArray[0] = result;
         },
+        error: (error) => {
+          alert('Error al obtener el registro');
+        },
       });
   }
 
@@ -213,6 +231,9 @@ export class Solicitudes implements OnInit {
         next: (result) => {
           window.location.href = this.href;
         },
+        error: (error) => {
+          alert('Error al eliminar el registro');
+        },
       });
   }
 
@@ -220,6 +241,9 @@ export class Solicitudes implements OnInit {
     this.http.put(`${environment.API_ROOSEVELT}/${endpoint}`, data).subscribe({
       next: (resutl) => {
         window.location.href = this.href;
+      },
+      error: (error) => {
+        alert('Error al acutalizar el registro');
       },
     });
   }

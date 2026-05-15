@@ -88,7 +88,7 @@ export class Ajustes implements OnInit {
     });
 
     this.ajustesForm = new FormGroup({
-      id_usuario: new FormControl({value: null, disabled: true}, Validators.required),
+      id_usuario: new FormControl({ value: null, disabled: true }, Validators.required),
       tema: new FormControl('', Validators.required),
       idioma: new FormControl('', Validators.required),
       foto: new FormControl('', [
@@ -97,7 +97,7 @@ export class Ajustes implements OnInit {
         Validators.maxLength(50),
       ]),
       recibir_noticias: new FormControl(false),
-      recibir_notificaciones: new FormControl(false)
+      recibir_notificaciones: new FormControl(false),
     });
 
     if (this.ajuestesId == undefined) {
@@ -118,8 +118,7 @@ export class Ajustes implements OnInit {
     }
 
     if (data != undefined) {
-
-      debugger
+      debugger;
       this.ajustesForm.controls['id_usuario'].disable();
       this.dataGet = data;
 
@@ -190,7 +189,7 @@ export class Ajustes implements OnInit {
   }
 
   validateData() {
-    debugger
+    debugger;
     if (this.ajustesForm?.valid) {
       this.dataPostPut.usuario.id = this.ajustesForm.controls?.['id_usuario'].value;
       for (const key in this.dataPostPut) {
@@ -233,6 +232,9 @@ export class Ajustes implements OnInit {
       next: (result: any) => {
         this.dataArray = result;
       },
+      error: (error) => {
+        alert('Error al obtener los registros');
+      },
     });
   }
 
@@ -243,6 +245,9 @@ export class Ajustes implements OnInit {
         next: (result: any) => {
           this.dataArray[0] = result;
         },
+        error: (error) => {
+          alert('Error al obtener el registro');
+        },
       });
   }
   postApi() {
@@ -251,6 +256,9 @@ export class Ajustes implements OnInit {
       .subscribe({
         next: (result) => {
           window.location.href = this.href;
+        },
+        error: (error) => {
+          alert('Error al publicar el registro');
         },
       });
   }
@@ -262,6 +270,9 @@ export class Ajustes implements OnInit {
         next: (result) => {
           window.location.href = this.href;
         },
+        error: (error) => {
+          alert('Error al eliminar el registro');
+        },
       });
   }
 
@@ -269,6 +280,9 @@ export class Ajustes implements OnInit {
     this.http.put(`${environment.API_ROOSEVELT}/${this.api_endpoint}`, this.dataPostPut).subscribe({
       next: (resutl) => {
         window.location.href = this.href;
+      },
+      error: (error) => {
+        alert('Error al actualizar el registro');
       },
     });
   }

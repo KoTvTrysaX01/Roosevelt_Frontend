@@ -94,6 +94,9 @@ export class Comentarios implements OnInit {
       next: (result: any) => {
         this.dataArray = result;
       },
+      error: (error) => {
+        alert('Error al obtener los registros');
+      },
     });
   }
 
@@ -104,6 +107,9 @@ export class Comentarios implements OnInit {
         next: (result: any) => {
           this.dataArray[0] = result;
         },
+        error: (error) => {
+          alert('Error al obtener el registro');
+        },
       });
   }
 
@@ -113,6 +119,9 @@ export class Comentarios implements OnInit {
       .subscribe({
         next: (result) => {
           window.location.href = this.href;
+        },
+        error: (error) => {
+          alert('Error al eliminar el registro');
         },
       });
   }
