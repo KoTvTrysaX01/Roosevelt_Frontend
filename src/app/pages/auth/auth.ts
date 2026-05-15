@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { RouterLink, RouterOutlet } from "@angular/router";
+import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { AuthService } from '../../services/auth-service';
 
 @Component({
@@ -8,15 +8,24 @@ import { AuthService } from '../../services/auth-service';
   templateUrl: './auth.html',
   styleUrl: './auth.scss',
 })
-export class Auth implements OnInit{
-
+export class Auth implements OnInit {
+  router = inject(Router);
   authService = inject(AuthService);
-  ngOnInit(): void {
 
+  active: string = "login";
+
+  ngOnInit(): void {
+  
   }
 
-  logout(): void{
+  logout(): void {
     localStorage.setItem('user', '');
     this.authService.currentUserSig.set(null);
+  }
+
+  changeTab(btnActive: string): void{
+    this.active = btnActive;
+    console.log(this.active);
+    
   }
 }

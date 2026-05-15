@@ -1,8 +1,10 @@
-@import "../../../variables.scss";
-
+$primary: #5b2671;
+$primary-light: #9974aa;
+$secondary: #e6d15a;
+$danger: #af251b;
 /*  CONTACT SECTION */
 .contact-section {
-  background-color: $color_form_bg;
+  background-color: #ffffff;
   min-height: 100vh;
   display: flex;
   align-items: center;
@@ -41,11 +43,10 @@
 /*  BUTTON*/
 .btn-primary {
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-
+  border-color: $secondary;
   &:hover {
     border-color: $secondary;
     transform: scale(1.1); // Efecto de crecimiento
     box-shadow: 0 10px 20px rgba($primary, 0.4);
-    background-color: $btn-hover-bg;
   }
 }

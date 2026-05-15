@@ -18,6 +18,7 @@ import { Rutas } from './components/tables/rutas/rutas';
 import { Comentarios } from './components/tables/comentarios/comentarios';
 import { Objetos } from './components/tables/objetos/objetos';
 import { Tipos } from './components/tables/tipos/tipos';
+import { Recover } from './components/recover/recover';
 
 export const routes: Routes = [
   {
@@ -143,6 +144,10 @@ export const routes: Routes = [
       {
         path: 'register',
         component: Register,
+      },
+      {
+        path: 'recover',
+        component: Recover,
       },
     ],
   },

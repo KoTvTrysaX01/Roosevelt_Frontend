@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
+import { AuthService } from '../../services/auth-service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-my-routes',
@@ -6,6 +8,13 @@ import { Component } from '@angular/core';
   templateUrl: './my-routes.html',
   styleUrl: './my-routes.scss',
 })
-export class MyRoutes {
+export class MyRoutes implements OnInit{
+  authService = inject(AuthService)
+  router = inject(Router)
+  ngOnInit(): void {
+    if(this.authService.currentUserSig() === null){
+      this.router.navigateByUrl('/auth/login')
+    }
+  }
 
 }

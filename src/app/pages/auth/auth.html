@@ -1,4 +1,4 @@
-<div>
+<!-- <div>
   <ul>
     @if (authService.currentUserSig() === null) {
       <li>
@@ -12,8 +12,53 @@
   @if (authService.currentUserSig()) {
     <button class="btn btn-primary" (click)="logout()">Log out</button>
   }
-</div>
+</div> -->
 
-<div>
-  <router-outlet></router-outlet>
-</div>
+<section class="mt-5 d-flex py-md-5 bg-light align-items-center">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="bg-form py-4 py-md-5 rounded-4 shadow border col-xl-8">
+        <div class="text-center mb-4 mb-md-5">
+          <p class="text-uppercase fw-bold text-primary fs-4 fs-md-3">Bienvenido!</p>
+          <h2 class="title-login fw-bold text-primary fs-4 fs-md-3">Accede a tu cuenta</h2>
+        </div>
+        <div>
+          <ul class="nav nav-pills nav-justified">
+            <li class="nav-item">
+              <a
+                class="nav-link {{ active == 'login' ? 'active' : '' }}"
+                aria-current="page"
+                routerLink="login"
+                (click)="changeTab('login')"
+                >Entrar</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link {{ active == 'register' ? 'active' : '' }}"
+                aria-current="page"
+                routerLink="register"
+                (click)="changeTab('register')"
+                >Registrarse</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link {{ active == 'recover' ? 'active' : '' }}"
+                aria-current="page"
+                routerLink="recover"
+                (click)="changeTab('recover')"
+                >Recuperar</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div>
+          <router-outlet></router-outlet>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+

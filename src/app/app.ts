@@ -17,15 +17,13 @@ export class App implements OnInit {
   http = inject(HttpClient);
   authService = inject(AuthService);
   ngOnInit(): void {
-    if (localStorage.getItem('user') !== null && localStorage.getItem('user') !== '') {
+    if (typeof localStorage !== 'undefined' && localStorage.getItem('user') !== null && localStorage.getItem('user') !== '') {
       this.authService.currentUserSig.set({
-        message: '',
+        message: 'Logged using cookies',
         user: localStorage.getItem('user'),
         roles: localStorage.getItem('roles'),
       });
     }
-console.log(this.authService.currentUserSig());
-
   }
   protected readonly title = signal('roosevelt_frontend');
 }

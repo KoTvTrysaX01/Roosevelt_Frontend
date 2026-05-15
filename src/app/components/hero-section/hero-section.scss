@@ -1,5 +1,4 @@
-@import "../../../variables.scss"; 
-
+$secondary:#e6d15a;
 .hero-section {
   position: relative;
   max-width: 100%;
@@ -48,7 +47,7 @@
   &:hover {
     border-color: $secondary;
     transform: scale(1.1); // Efecto de crecimiento
-    box-shadow: 0 10px 20px rgba($primary, 0.4);
+
   }
 }
 
