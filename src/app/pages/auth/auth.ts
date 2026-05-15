@@ -25,7 +25,5 @@ export class Auth implements OnInit {
 
   changeTab(btnActive: string): void{
     this.active = btnActive;
-    console.log(this.active);
-    
   }
 }

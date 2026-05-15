@@ -1,14 +1,14 @@
-<section class="">
+<section class="my-5">
   <div class="d-flex align-items-center h-100">
     <div class="container h-100">
       <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col-12 col-md-9 col-lg-7 col-xl-6">
-          <div class="card" style="border-radius: 15px">
+          <div class="card">
             <div class="card-body p-5">
-              <h2 class="text-uppercase text-center mb-5">Create an account</h2>
+              <h2 class="text-uppercase text-center mb-5">Registrarse</h2>
 
-              <form [formGroup]="registerForm" (ngSubmit)="onRegister()">
-                <div class="form-outline mb-4">
+              <form class="row" [formGroup]="registerForm" (ngSubmit)="onRegister()">
+                <div class="form-outline mb-4 col-md-6">
                   <input
                     formControlName="nombre"
                     type="text"
@@ -18,7 +18,7 @@
                   <label class="form-label" for="nombre_field">Tu Nombre</label>
                 </div>
 
-                <div class="form-outline mb-4">
+                <div class="form-outline mb-4 col-md-6">
                   <input
                     formControlName="apellido"
                     type="text"
@@ -60,19 +60,17 @@
                   >
                 </div>
 
-                <div class="form-outline mb-4">
+                <div class="form-outline mb-4 col-md-6">
                   <input
                     formControlName="tel"
                     type="tel"
                     id="tel_field"
                     class="form-control form-control-lg"
                   />
-                  <label class="form-label" for="tel_field"
-                    >Teléfono</label
-                  >
+                  <label class="form-label" for="tel_field">Teléfono</label>
                 </div>
 
-                <div class="form-outline mb-4">
+                <div class="form-outline mb-4 col-md-6">
                   <input
                     formControlName="fechaNac"
                     type="date"
@@ -104,9 +102,7 @@
                 <div class="d-flex justify-content-center">
                   <button
                     type="submit"
-                    data-mdb-button-init
-                    data-mdb-ripple-init
-                    class="btn btn-primary-light text-light btn-block btn-lg gradient-custom-4"
+                    class="btn btn-primary-light text-light btn-block btn-lg gradient-custom-4 w-100"
                   >
                     Register
                   </button>
@@ -114,8 +110,8 @@
 
                 <p class="text-center text-muted mt-5 mb-0">
                   ¿Ya tienes una cuenta?
-                  <a href="#!" class="fw-bold text-primary" [routerLink]="['/login/log-in']"
-                    ><u>Login here</u></a
+                  <a href="#!" class="fw-bold text-primary" routerLink="/auth/login"
+                    ><u>Iniciar session</u></a
                   >
                 </p>
               </form>

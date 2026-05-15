@@ -1,6 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { Router } from 'express';
 import { AuthService } from '../../services/auth-service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-fav-routes',
