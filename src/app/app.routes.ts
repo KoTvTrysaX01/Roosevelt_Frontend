@@ -19,7 +19,6 @@ import { Rutas } from './components/tables/rutas/rutas';
 import { Comentarios } from './components/tables/comentarios/comentarios';
 import { Objetos } from './components/tables/objetos/objetos';
 import { Tipos } from './components/tables/tipos/tipos';
-import { Testapi } from './components/testapi/testapi';
 
 export const routes: Routes = [
   {
@@ -46,10 +45,6 @@ export const routes: Routes = [
   {
     path: 'settings',
     component: Settings,
-  },
-  {
-    path: 'test',
-    component: Testapi,
   },
   {
     path: 'admin',

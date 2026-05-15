@@ -87,7 +87,7 @@ export class Mensajes implements OnInit {
         this.dataArray = result;
       },
       error: (error) => {
-        alert('Error al obtener los registros');
+        alert('Error al obtener los registros\n' + error.message);
       },
     });
   }
@@ -98,7 +98,7 @@ export class Mensajes implements OnInit {
         this.dataArray[0] = result;
       },
       error: (error) => {
-        alert('Error al obtener el registro');
+        alert('Error al obtener el registro\n' + error.message);
       },
     });
   }
@@ -111,7 +111,7 @@ export class Mensajes implements OnInit {
           window.location.href = this.href;
         },
         error: (error) => {
-          alert('Error al eliminar el registro');
+          alert('Error al eliminar el registro\n' + error.message);
         },
       });
   }
