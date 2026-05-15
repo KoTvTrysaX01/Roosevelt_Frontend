@@ -1,0 +1,19 @@
+<div>
+  <ul>
+    @if (authService.currentUserSig() === null) {
+      <li>
+        <a class="nav-lin" [routerLink]="['login']">Login</a>
+      </li>
+      <li>
+        <a class="nav-lin" [routerLink]="['register']">Register</a>
+      </li>
+    }
+  </ul>
+  @if (authService.currentUserSig()) {
+    <button class="btn btn-primary" (click)="logout()">Log out</button>
+  }
+</div>
+
+<div>
+  <router-outlet></router-outlet>
+</div>

@@ -5,10 +5,9 @@ import { FavRoutes } from './pages/fav-routes/fav-routes';
 import { Settings } from './pages/settings/settings';
 import { Administrador } from './pages/administrador/administrador';
 import { Map } from './pages/map/map';
-import { Login } from './pages/login/login';
-import { LogIn } from './components/log-in/log-in';
+import { Auth } from './pages/auth/auth';
+import { Login } from './components/login/login';
 import { Register } from './components/register/register';
-import { Restore } from './components/restore/restore';
 import { Solicitudes } from './components/tables/solicitudes/solicitudes';
 import { Mensajes } from './components/tables/mensajes/mensajes';
 import { Estadisticas } from './components/tables/estadisticas/estadisticas';
@@ -133,21 +132,17 @@ export const routes: Routes = [
     ],
   },
   {
-    path: 'login',
-    component: Login,
+    path: 'auth',
+    component: Auth,
     children: [
       {
-        path: 'log-in',
-        component: LogIn,
+        path: 'login',
+        component: Login,
         pathMatch: 'full',
       },
       {
         path: 'register',
         component: Register,
-      },
-      {
-        path: 'restore',
-        component: Restore,
       },
     ],
   },
