@@ -220,15 +220,7 @@ export class Rutas implements OnInit {
       if (this.dataGet.id == 0) {
         this.postApi();
       } else {
-        for (const key in this.dataPostPut) {
-          if (
-            this.dataPostPut[key] == null ||
-            this.dataPostPut[key] == undefined ||
-            this.dataPostPut[key] == ''
-          ) {
-            this.dataPostPut[key] = this.dataGet[key];
-          }
-        }
+        this.dataPostPut['id'] = this.dataGet['id'];
         this.putApi();
       }
     } else {

@@ -1,57 +1,69 @@
-<footer class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 my-5 border-top">
-  <div class="col mb-3">
-    <a
-      href="/"
-      class="d-flex align-items-center mb-3 link-body-emphasis text-decoration-none"
-      aria-label="Bootstrap"
-    >
-      <svg class="bi me-2" width="40" height="32" aria-hidden="true">
-        <use xlink:href="#bootstrap"></use>
-      </svg>
-    </a>
-    <p class="text-body-secondary">© 2025</p>
-  </div>
-  <div class="col mb-3"></div>
-  <div class="col mb-3">
-    <h5>Section</h5>
-    <ul class="nav flex-column">
-      <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Home</a></li>
-      <li class="nav-item mb-2">
-        <a href="#" class="nav-link p-0 text-body-secondary">Features</a>
-      </li>
-      <li class="nav-item mb-2">
-        <a href="#" class="nav-link p-0 text-body-secondary">Pricing</a>
-      </li>
-      <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">FAQs</a></li>
-      <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">About</a></li>
-    </ul>
-  </div>
-  <div class="col mb-3">
-    <h5>Section</h5>
-    <ul class="nav flex-column">
-      <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Home</a></li>
-      <li class="nav-item mb-2">
-        <a href="#" class="nav-link p-0 text-body-secondary">Features</a>
-      </li>
-      <li class="nav-item mb-2">
-        <a href="#" class="nav-link p-0 text-body-secondary">Pricing</a>
-      </li>
-      <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">FAQs</a></li>
-      <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">About</a></li>
-    </ul>
-  </div>
-  <div class="col mb-3">
-    <h5>Section</h5>
-    <ul class="nav flex-column">
-      <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Home</a></li>
-      <li class="nav-item mb-2">
-        <a href="#" class="nav-link p-0 text-body-secondary">Features</a>
-      </li>
-      <li class="nav-item mb-2">
-        <a href="#" class="nav-link p-0 text-body-secondary">Pricing</a>
-      </li>
-      <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">FAQs</a></li>
-      <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">About</a></li>
-    </ul>
-  </div>
-</footer>
+<div class="bg-primary-dark py-5">
+  <footer
+    class="row row-cols-1 row-cols-sm-2 row-cols-md-6 py-5 border-top border-bottom border-3 border-info text-light "
+  >
+    <div class="col-md-2 mb-3 text-center text-md-start">
+      <a routerLink="/">
+        <img src="logo-sm.png" class="img-fluid w-25" alt="el-roosevelt-logo" />
+      </a>
+      <p class="text-body-primary">El Roosevelt © 2025</p>
+    </div>
+    <div class="col-md-2 mn-3"></div>
+    <div class="col-md-2 mb-3 text-center text-md-start">
+      <h5 class="text-info fw-bold">Inicio</h5>
+      <ul class="nav flex-column">
+        <li class="nav-item mb-2">
+          <a routerLink="/home" class="nav-link p-0 text-light">Home</a>
+        </li>
+        <li class="nav-item mb-2">
+          <a routerLink="/home" class="nav-link p-0 text-light">Sobre la App</a>
+        </li>
+        <li class="nav-item mb-2">
+          <a routerLink="/home" class="nav-link p-0 text-light">Contacto</a>
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-2 mb-3 text-center text-md-start">
+      <h5 class="text-info fw-bold">Mapa</h5>
+      <ul class="nav flex-column">
+        <li class="nav-item mb-2">
+          <a routerLink="/home" class="nav-link p-0 text-light">Zonas</a>
+        </li>
+        <li class="nav-item mb-2">
+          <a routerLink="/home" class="nav-link p-0 text-light">Buscar Ruta</a>
+        </li>
+        <li class="nav-item mb-2">
+          <a routerLink="/home" class="nav-link p-0 text-light">Puntos de Interés</a>
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-2 mb-3 text-center text-md-start">
+      <h5 class="text-info fw-bold">Rutas</h5>
+      <ul class="nav flex-column">
+        <li class="nav-item mb-2">
+          <a routerLink="/map" class="nav-link p-0 text-light">Rutas Populares</a>
+        </li>
+        <li class="nav-item mb-2">
+          <a routerLink="/my_routes" class="nav-link p-0 text-light">Mis Rutas</a>
+        </li>
+        <li class="nav-item mb-2">
+          <a routerLink="/fav_routes" class="nav-link p-0 text-light">Mis Rutas Favoritas</a>
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-2 mb-3 text-center text-md-start">
+      <h5 class="text-info fw-bold">Cuenta</h5>
+      <ul class="nav flex-column">
+        <li class="nav-item mb-2">
+          <a routerLink="/auth/register" class="nav-link p-0 text-light">Registrarse</a>
+        </li>
+        <li class="nav-item mb-2">
+          <a routerLink="/auth/login" class="nav-link p-0 text-light">Inicias Sessión</a>
+        </li>
+        <li class="nav-item mb-2">
+          <a routerLink="/auth/recover" class="nav-link p-0 text-light">Recuperar</a>
+        </li>
+      </ul>
+    </div>
+  </footer>
+</div>

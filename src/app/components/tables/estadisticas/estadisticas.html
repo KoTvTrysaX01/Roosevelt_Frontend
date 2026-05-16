@@ -1,1 +1,112 @@
-<p>estadisticas works!</p>
+<div class="my-2 p-2 bg-success rounded rounded-2">
+  <div class="table-responsive">
+    <div class="d-flex justify-content-start justify-content-lg-between align-items-center mb-1">
+      <span class="fs-2 text-light fw-bold pe-3">Cantidad de Registros</span>
+    </div>
+    <table class="table table-bordered table-striped">
+      <thead class="table-success">
+        <tr>
+          @for (item of dataValues; track $index) {
+            <th>{{ item }}</th>
+          }
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{ cantidadDeRegistros['zonas'] }}</td>
+          <td>{{ cantidadDeRegistros['rutas'] }}</td>
+          <td>{{ cantidadDeRegistros['objetos'] }}</td>
+          <td>{{ cantidadDeRegistros['tiposobjeto'] }}</td>
+          <td>{{ cantidadDeRegistros['usuarios'] }}</td>
+          <td>{{ cantidadDeRegistros['comentarios'] }}</td>
+          <td>{{ cantidadDeRegistros['solicitudes'] }}</td>
+          <td>{{ cantidadDeRegistros['mensajes'] }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="row row-cols-3 row-cols-md-1 justify-content-around">
+    <div class="col-12 col-md-4 d-flex flex-column justify-content-between">
+      <div class="bg-warning p-2 rounded">
+        <span class="h4 text-light">La Ruta Más Popular: {{ rutaPopular.nombreRuta }}</span>
+        <table class="table table-bordered table-striped my-1">
+          <thead class="table-warning">
+            <tr>
+              <th>ID</th>
+              <th>AUTOR</th>
+              <th>ZONA</th>
+              <th>LIKES</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{ rutaPopular.id }}</td>
+              <td>{{ rutaPopular.usuario_autor.username }}</td>
+              <td>{{ rutaPopular.zona.nombre_zona }}</td>
+              <td>{{ rutaPopular.likesCount }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="bg-warning p-2 rounded">
+        <span class="h4 text-light">El Tipo Más Usado: {{ tipoUsado.nombre_tipo }}</span>
+        <table class="table table-bordered table-striped my-1">
+          <thead class="table-warning">
+            <tr>
+              <th>ID</th>
+              <th>ICONO</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{ tipoUsado.id }}</td>
+              <td>{{ tipoUsado.icono }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col-12 col-md-4 justify-content-around p-2 bg-info rounded">
+      <table class="table table-bordered table-striped my-1 ">
+        <thead class="table-info">
+          <tr>
+            <th>Valor</th>
+            <th>Número</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Administradores</td>
+            <td>{{ cantidadAdmins.usuarios }}</td>
+          </tr>
+          <tr>
+            <td>Rutas Publicadas</td>
+            <td>{{ cantidadRutasPublicadas.rutas }}</td>
+          </tr>
+          <tr>
+            <td>Receptores de Noticias</td>
+            <td>{{ cantidadSubNoticias.cantidad_noticias }}</td>
+          </tr>
+          <tr>
+            <td>Receptores de Notificaciones</td>
+            <td>{{ cantidadSubNotificaciones.cantidad_notificaciones }}</td>
+          </tr>
+          <tr>
+            <td>Zonas Peligrosas</td>
+            <td>{{ cantidadZonasPeligrosas.zonas }}</td>
+          </tr>
+          <tr>
+            <td>Objetos Peligrosos</td>
+            <td>{{ cantidadObjetosPeligrosos.objetos }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="col-12 col-md-4">
+      <!-- @if (isLoaded) { -->
+      <app-pie-chart [data]="ages"></app-pie-chart>
+      <!-- } -->
+    </div>
+  </div>
+</div>
