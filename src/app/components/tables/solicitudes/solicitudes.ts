@@ -178,10 +178,7 @@ export class Solicitudes implements OnInit {
     // this.putApi('rutas', this.dataSolicitudPut.solicitudId.ruta);
 
     this.http.put(`${environment.API_ROOSEVELT}/rutas`, this.rutaPut).subscribe({
-      next: (resutl) => {
-        // window.location.href = this.href;
-        alert('Éxito!');
-      },
+      next: (resutl) => {},
       error: (error) => {
         alert('Error al actualizar el registro\n' + error.message);
       },
@@ -189,15 +186,13 @@ export class Solicitudes implements OnInit {
 
     this.http.put(`${environment.API_ROOSEVELT}/solicitudes`, this.dataSolicitudPut).subscribe({
       next: (resutl) => {
-        // window.location.href = this.href;
-        alert('Éxito!');
+        window.location.href = this.href;
       },
       error: (error) => {
         alert('Error al actualizar el registro\n' + error.message);
       },
     });
-
-   
+    //window.location.href = this.href;
   }
 
   getApi() {

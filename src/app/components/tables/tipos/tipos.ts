@@ -55,7 +55,7 @@ export class Tipos implements OnInit {
     this.tipoForm = new FormGroup({
       nombre_tipo: new FormControl('', [
         Validators.required,
-        Validators.pattern('^([a-zA-Z0-9]+)$'),
+        Validators.pattern('[a-zA-Z0-9\\s]+'),
         Validators.maxLength(30),
       ]),
       icono: new FormControl('', [
