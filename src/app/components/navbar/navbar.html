@@ -1,30 +1,29 @@
-<div class="d-none d-md-flex w-100 justify-content-center bg-secondary text-white">
-  <ul class="container-fluid nav nav-pills nav-fill justify-content-between p-1 bg-info-dark">
-    <li class="nav-item col fs-5" [routerLink]="['/home']">
+<div class="d-none d-md-flex w-100 justify-content-center text-white">
+  <ul class="container-fluid nav nav-pills nav-fill justify-content-between p-1 bg-info">
+    <li class="nav-item col fs-5 rounded rounded-4"  [routerLink]="['/home']" routerLinkActive="bg-success">
       <i class="bi bi-house-door pe-2 fs-4"></i>
-      <span class="d-none d-lg-inline">Inicio</span>
+      <a class="d-none d-lg-inline text-light text-decoration-none">Inicio</a>
     </li>
-    <li class="nav-item col fs-5" [routerLink]="['/map']">
+    <li class="nav-item col fs-5 rounded rounded-4"  [routerLink]="['/map']" routerLinkActive="bg-success">
       <i class="bi bi-globe-americas pe-2 fs-4"></i>
-      <span class="d-none d-lg-inline">Mapa</span>
+      <a class="d-none d-lg-inline text-light text-decoration-none">Mapa</a>
     </li>
-    <li class="nav-item col fs-5" 
-    routerLink="my_routes">
+    <li class="nav-item col fs-5 rounded rounded-4"  [routerLink]="['/my_routes']" routerLinkActive="bg-success">
       <i class="bi bi-geo-alt pe-2 fs-4"></i>
-      <span class="d-none d-lg-inline">Mis Rutas</span>
+      <a class="d-none d-lg-inline text-light text-decoration-none">Mis Rutas</a>
     </li>
-    <li class="nav-item col fs-5" [routerLink]="['/fav_routes']">
+    <li class="nav-item col fs-5 rounded rounded-4"  [routerLink]="['/fav_routes']" routerLinkActive="bg-success">
       <i class="bi bi-heart pe-2 fs-4"></i>
-      <span class="d-none d-lg-inline">Rutas Favoritas</span>
+      <a class="d-none d-lg-inline text-light text-decoration-none" >Rutas Favoritas</a>
     </li>
-    <li class="nav-item col fs-5" [routerLink]="['/settings']">
+    <li class="nav-item col fs-5 rounded rounded-4"  [routerLink]="['/settings']" routerLinkActive="bg-success">
       <i class="bi bi-gear pe-2 fs-4"></i>
-      <span class="d-none d-lg-inline">Configuración</span>
+      <a class="d-none d-lg-inline text-light text-decoration-none">Configuración</a>
     </li>
     @if (authService.currentUserSig()?.roles === '[ROLE_ADMIN]') {
-      <li class="nav-item col fs-5" [routerLink]="['/admin/']">
-        <i class="bi bi-key pe-2 fs-4"></i>
-        <span class="d-none d-lg-inline cursor">Administrador</span>
+      <li class="nav-item col fs-5 rounded rounded-4"  [routerLink]="['/admin/solicitudes']" routerLinkActive="bg-success">
+        <i class="bi bi-key pe-2 fs-4 text-light text-decoration-none"></i>
+        <a class="d-none d-lg-inline text-light text-decoration-none">Administrador</a>
       </li>
     }
   </ul>
@@ -42,7 +41,7 @@
       aria-expanded="false"
       aria-label="Toggle navigation"
     >
-      <span class="navbar-toggler-icon"></span>
+      <a class="navbar-toggler-icon"></a>
     </button>
     <div class="collapse navbar-collapse bg-white rounded rounded-2" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">

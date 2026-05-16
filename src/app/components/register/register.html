@@ -4,7 +4,7 @@
       <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col-12 col-md-9 col-lg-7 col-xl-6">
           <div class="card">
-            <div class="card-body p-5">
+            <div class="card-body py-5">
               <h2 class="text-uppercase text-center mb-5">Registrarse</h2>
 
               <form class="row" [formGroup]="registerForm" (ngSubmit)="onRegister()">
@@ -110,7 +110,7 @@
 
                 <p class="text-center text-muted mt-5 mb-0">
                   ¿Ya tienes una cuenta?
-                  <a href="#!" class="fw-bold text-primary" routerLink="/auth/login"
+                  <a href="auth/login" class="fw-bold text-primary" routerLink="/auth/login"
                     ><u>Iniciar session</u></a
                   >
                 </p>

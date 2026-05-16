@@ -1,11 +1,11 @@
-<div class="my-2 p-2 bg-secondary rounded rounded-2">
+<div class="my-2 p-2 bg-success rounded rounded-2">
   <div class="table-responsive">
     <div class="d-flex justify-content-start justify-content-lg-between align-items-center mb-1">
       <span class="fs-2 text-light fw-bold pe-3">Tipos de Objetos</span>
       <button class="btn btn-info-light" (click)="openFormModal(null)">Crear nuevo</button>
     </div>
     <table class="table table-bordered table-striped">
-      <thead class="table-primary">
+      <thead class="table-success">
         <tr>
           @for (item of dataValues; track $index) {
             <th>{{ item }}</th>
@@ -130,7 +130,7 @@
                 {{ dataGet.id == 0 ? 'Crear' : 'Actualizar' }} Tipo
               </button>
               <div>
-                <button class="btn btn-primary me-2" type="reset">Restablecer</button>
+                <button class="btn btn-info me-2" type="reset">Restablecer</button>
                 <button
                   type="button"
                   class="btn btn-danger ms-2 px-4"

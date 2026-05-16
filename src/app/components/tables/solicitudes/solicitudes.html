@@ -1,10 +1,10 @@
-<div class="my-2 p-2 bg-secondary rounded rounded-2">
+<div class="my-2 p-2 bg-success rounded rounded-2">
   <div class="table-responsive">
     <div class="d-flex justify-content-start justify-content-lg-between align-items-center mb-1">
       <span class="fs-2 text-light fw-bold pe-3">Comentarios</span>
     </div>
     <table class="table table-bordered table-striped">
-      <thead class="table-primary">
+      <thead class="table-success">
         <tr>
           @for (item of dataValues; track $index) {
             <th>{{ item }}</th>
@@ -57,7 +57,7 @@
       </div>
       <div class="modal-body">
         <div class="d-flex justify-content-evenly">
-          <button class="btn btn-lg btn-info" (click)="makeDecision()">{{titulo}}</button>
+          <button class="btn btn-lg btn-danger" (click)="makeDecision()">{{titulo}}</button>
           <button class="btn btn-lg btn-success" (click)="closeDecisionModal()">Cancelar</button>
         </div>
       </div>
@@ -65,18 +65,3 @@
   </div>
 </div>
 
-<!-- <div class="modal" id="acceptModal">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header d-flex justify-content-center">
-        <h4>¿Aprobar la solicitud?</h4>
-      </div>
-      <div class="modal-body">
-        <div class="d-flex justify-content-evenly">
-          <button class="btn btn-lg btn-danger" (click)="aprobar()">Eliminar</button>
-          <button class="btn btn-lg btn-success" (click)="closeDecisionModal()">Cancelar</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</div> -->
