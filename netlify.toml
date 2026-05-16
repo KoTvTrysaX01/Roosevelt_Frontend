@@ -1,0 +1,5 @@
+[[redirects]]
+    from = "/roosevelt/api/*"
+    to = "https://54.196.40.74/:8080/roosevelt/api/:splat"
+    status = 200
+    force = true
