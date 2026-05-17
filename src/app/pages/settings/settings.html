@@ -1,1 +1,107 @@
-<p>settings works!</p>
+<div class="py-5 px-2 w-100 bg-primary">
+  <div class="row gutters">
+    <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
+      <div class="card h-100">
+        <div class="card-body">
+          <div class="account-settings">
+            <div class="user-profile">
+              <div class="user-avatar">
+                <img class="img-fluid" src="avatar.png" alt="Maxwell Admin" />
+              </div>
+              <h5 class="user-name">Vadim Elshin</h5>
+              <h6 class="user-email">vadim@gmail.com</h6>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
+      <div class="card h-100">
+        <div class="card-body">
+          <div class="row gutters">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+              <h6 class="mb-3 text-primary">Datos personales</h6>
+            </div>
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+              <div class="form-group">
+                <label for="fullName">Nombre Completo</label>
+                <input type="text" class="form-control" id="fullName" placeholder="Vadim Elshin" />
+              </div>
+            </div>
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+              <div class="form-group">
+                <label for="eMail">Correo Electrónico</label>
+                <input type="email" class="form-control" id="eMail" placeholder="vadim@gmail.com" />
+              </div>
+            </div>
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+              <div class="form-group">
+                <label for="phone">Teléfono</label>
+                <input type="text" class="form-control" id="phone" placeholder="+34 644822123" />
+              </div>
+            </div>
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+              <div class="form-group">
+                <label for="eMailSec">Correo Electrónico Secundario</label>
+                <input
+                  type="emailSec"
+                  class="form-control"
+                  id="eMailSec"
+                  placeholder="vadim@gmail.es"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="row gutters my-4">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+              <h6 class="mb-3 text-primary">Ajustes</h6>
+            </div>
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+              <div class="form-group">
+                <label for="Idioma">Idioma</label>
+                <select class="form-control">
+                  <option selected disabled value="">Selecciona tu idioma</option>
+                  <option>Español</option>
+                  <option>Inglés</option>
+                  <option>Ruso</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+              <div class="form-group">
+                <label for="Tema">Tema</label>
+                <select class="form-control">
+                  <option selected disabled value="">Selecciona tu tema</option>
+                  <option>Dark</option>
+                  <option>Light</option>
+                  <option>Sistema</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-3">
+              <div class="d-flex justify-content-start">
+                <div class="form-group me-5">
+                  <input type="checkbox" class="form-check" id="noticias" />
+                  <label for="noticias">¿Recibir Noticias?</label>
+                </div>
+                <div class="form-group">
+                  <input type="checkbox" class="form-check" id="noticifaciones" />
+                  <label for="noticifaciones">¿Recibir Notificaciones?</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row gutters">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+              <div class="text-right d-flex justify-content-center">
+                <button type="button" id="submit" name="submit" class="btn btn-lg btn-primary">
+                  Update
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
