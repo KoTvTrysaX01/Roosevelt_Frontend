@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnDestroy, OnInit, ViewChild, inject } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { PLATFORM_ID } from '@angular/core';
+import { environment } from '../../../environments/environment.development';
 
 @Component({
   selector: 'app-mapbox', 
@@ -19,7 +20,7 @@ export class Maxbox implements OnInit, OnDestroy {
 
       // Create a new map instance
       this.map = new mapboxgl.Map({
-        accessToken: 'pk.eyJ1IjoidmFkZWxzIiwiYSI6ImNtbTIwM2hzODAyajUycHM4YjVxZ2N5NTAifQ.2CdWf9gLKVZ-tUc7oMF_EA',
+        accessToken: environment.mapbox_token,
         container: this.mapContainer.nativeElement, // Reference to the map container element
         center: [-98.54818, 40.00811], // Center coordinates for map over the continental US
         zoom: 4, // Initial zoom level
